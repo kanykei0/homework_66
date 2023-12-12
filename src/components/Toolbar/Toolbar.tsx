@@ -17,7 +17,7 @@ const Toolbar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <NavLink className="nav-link" to="/new-meal">
+            <NavLink className="nav-link" to="/new-food">
               Add new meal
             </NavLink>
           </Nav>

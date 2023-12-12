@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Toolbar from "./components/Toolbar/Toolbar";
 import Foods from "./containers/Foods/Foods";
+import NewFood from "./containers/NewFood/NewFood";
 
 function App() {
   return (
@@ -8,10 +9,10 @@ function App() {
       <header>
         <Toolbar />
       </header>
-      <main className="container-fluid">
+      <main className="container">
         <Routes>
           <Route path="/" element={<Foods />}></Route>
-          <Route path="/new-meal" element></Route>
+          <Route path="/new-food" element={<NewFood />}></Route>
           <Route
             path="*"
             element={
