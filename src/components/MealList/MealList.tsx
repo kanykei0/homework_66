@@ -14,6 +14,7 @@ const MealList: React.FC<Props> = ({ meals, deleteMeal }) => {
         {meals ? (
           Object.keys(meals).map((key) => (
             <Meal
+              id={key}
               key={key}
               meal={meals[key]}
               onDelete={() => deleteMeal(key)}

@@ -2,12 +2,14 @@ import { Route, Routes } from "react-router-dom";
 import Meals from "./containers/Meals/Meals";
 import NewMeal from "./containers/NewMeal/NewMeal";
 import Layout from "./components/Layout/Layout";
+import EditMeal from "./containers/EditMeal/EditMeal";
 
 function App() {
   return (
     <Layout>
       <Routes>
         <Route path="/" element={<Meals />}></Route>
+        <Route path="/edit-meal/:id" element={<EditMeal />} />
         <Route path="/new-meal" element={<NewMeal />}></Route>
         <Route
           path="*"

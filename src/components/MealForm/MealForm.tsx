@@ -13,16 +13,16 @@ interface Props {
   onSubmit: (meal: foodProps) => void;
   isEdit?: boolean;
   isLoading?: boolean;
-  existingDish?: foodProps;
+  existingMeal?: foodProps;
 }
 
 const MealForm: React.FC<Props> = ({
   onSubmit,
   isEdit,
   isLoading,
-  existingDish = initialState,
+  existingMeal = initialState,
 }) => {
-  const [food, setFood] = useState<foodProps>(existingDish);
+  const [food, setFood] = useState<foodProps>(existingMeal);
 
   const onChange = (
     event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
@@ -52,6 +52,7 @@ const MealForm: React.FC<Props> = ({
             <select
               className="form-select"
               onChange={onChange}
+              value={food.category}
               name="category"
               required
             >
@@ -68,6 +69,7 @@ const MealForm: React.FC<Props> = ({
             </label>
             <input
               onChange={onChange}
+              value={food.description}
               name="description"
               type="text"
               className="form-control"
@@ -82,6 +84,7 @@ const MealForm: React.FC<Props> = ({
             <input
               className="form-control"
               type="number"
+              value={food.kcal}
               id="kcal"
               name="kcal"
               onChange={onChange}
