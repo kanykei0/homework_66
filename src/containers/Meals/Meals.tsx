@@ -21,7 +21,21 @@ const Meals = () => {
   useEffect(() => {
     void fetchMeals();
   }, []);
-  return <div>{loading ? <Spinner /> : <FoodList meals={meals} />}</div>;
+
+  const deleteMeal = async (id: string) => {
+    await axiosApi.delete("meals/" + id + ".json");
+    await fetchMeals();
+  };
+
+  return (
+    <div>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <FoodList deleteMeal={deleteMeal} meals={meals} />
+      )}
+    </div>
+  );
 };
 
 export default Meals;
