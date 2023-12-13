@@ -2,14 +2,16 @@ import React from "react";
 import { foodProps } from "../../types";
 import { PencilSquare, Trash3 } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import ButtonSpinner from "../Spinner/ButtonSpinner";
 
 interface Props {
   id: string;
   meal: foodProps;
   onDelete: React.MouseEventHandler;
+  isLoading?: boolean;
 }
 
-const Meal: React.FC<Props> = ({ id, meal, onDelete }) => {
+const Meal: React.FC<Props> = ({ id, meal, onDelete, isLoading = false }) => {
   return (
     <div className="card m-2">
       <div className="card-body row">
@@ -23,11 +25,15 @@ const Meal: React.FC<Props> = ({ id, meal, onDelete }) => {
           <span>{meal.kcal}</span>
         </div>
         <div className="col-1">
-          <Link to={`/edit-meal/${id}`} className="btn p-0 d-block">
+          <Link to={`/edit-meal/${id}`} className="btn p-0">
             <PencilSquare />
           </Link>
-          <button className="btn p-0 d-block" onClick={onDelete}>
-            <Trash3 />
+          <button
+            className="btn p-0 d-block"
+            onClick={onDelete}
+            disabled={isLoading}
+          >
+            {isLoading ? <ButtonSpinner /> : <Trash3 />}
           </button>
         </div>
       </div>

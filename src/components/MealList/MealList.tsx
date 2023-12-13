@@ -5,9 +5,10 @@ import Meal from "./Meal";
 interface Props {
   meals: Foods | null;
   deleteMeal: (id: string) => void;
+  isLoading?: { [key: string]: boolean } | boolean;
 }
 
-const MealList: React.FC<Props> = ({ meals, deleteMeal }) => {
+const MealList: React.FC<Props> = ({ meals, deleteMeal, isLoading }) => {
   return (
     <>
       <div>
@@ -18,6 +19,11 @@ const MealList: React.FC<Props> = ({ meals, deleteMeal }) => {
               key={key}
               meal={meals[key]}
               onDelete={() => deleteMeal(key)}
+              isLoading={
+                isLoading && typeof isLoading === "object"
+                  ? isLoading[key]
+                  : false
+              }
             />
           ))
         ) : (
