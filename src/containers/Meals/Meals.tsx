@@ -28,12 +28,10 @@ const Meals = () => {
         const kcalValue =
           meal.kcal !== undefined ? parseInt(String(meal.kcal), 10) : 0;
         return num + kcalValue;
-      }, 0 as number);
+      }, 0);
       setCalories(calories);
     }
   }, [meals]);
-
-  console.log(meals);
 
   useEffect(() => {
     void fetchMeals();
@@ -61,7 +59,7 @@ const Meals = () => {
 
   return (
     <div>
-      <h5>Total kcal: {calories} kcal</h5>
+      <h5 className="my-5">Total kcal: {calories} kcal</h5>
       {loading ? (
         <Spinner />
       ) : (

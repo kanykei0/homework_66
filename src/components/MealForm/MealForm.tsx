@@ -45,9 +45,14 @@ const MealForm: React.FC<Props> = ({
 
   return (
     <>
-      <h4>{isEdit ? "Edit meal" : "Add new meal"}</h4>
-      <Form onSubmit={formSubmit} className="my-4 col-8">
-        <div>
+      <h4 className="text-center mt-5">
+        {isEdit ? "Edit meal" : "Add new meal"}
+      </h4>
+      <Form
+        onSubmit={formSubmit}
+        className="my-4 col-8 shadow p-4 rounded mx-auto"
+      >
+        <div className="pt-3">
           <div className="mb-3">
             <select
               className="form-select"
@@ -56,7 +61,7 @@ const MealForm: React.FC<Props> = ({
               name="category"
               required
             >
-              <option>Choose category</option>
+              <option value="">Choose category</option>
               <option value="breakfast">Breakfast</option>
               <option value="snack">Snack</option>
               <option value="lunch">Lunch</option>
